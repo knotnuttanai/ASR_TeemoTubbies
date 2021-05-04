@@ -1,0 +1,47 @@
+.partial {
+    color: red;
+}
+
+.jumbotron {
+    /* background: rgb(32, 57, 105); */
+    color: white;
+    background: #F3904F;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3B4371, #F3904F);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+#logo {
+    height: 2em;
+    margin-right: 0.5em;
+}
+
+#output {
+    background-color: #eee;
+    height: 500px;
+    overflow: auto;
+    padding: 10px;
+}
+
+#output span {
+    margin-left: 1em;
+}
+
+#status {
+    font-size: 9pt;
+    margin-left: 10px;
+}
+
+span.logo {
+    margin: 0 auto 30px;
+    width: 144px;
+    height: 144px;
+    border: 1px solid;
+    text-align: center;
+    font-size: 108px;
+    line-height: 140px;
+    display: block;
+    font-weight: 600;
+    border-radius: 15%;
+    color: black;
+  }

@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+  kaldi:
+    build: "./model"
+    volumes:
+      - "./model/model:/model"
+  web:
+    build: ./web/server
+    volumes:
+      - ./web/server:/server
+    ports:
+      - "8080:8080"
