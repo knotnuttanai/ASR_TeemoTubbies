@@ -4,6 +4,16 @@ from var_text2num import *
 import pandas as pd
 import math
 import importlib
+from sympy.solvers import solve
+from sympy import Symbol
+
+x = Symbol('x')
+
+def left_minus_right(equation):
+    equal_idx = equation.index('=')
+    left = '('+equation[:equal_idx]+')'
+    right ='('+equation[equal_idx+1:]+')'
+    return(left+'-'+right)
 
 def fix_million(parsed_l,typeed_l):
     new_parsed_l = []
@@ -148,6 +158,7 @@ def text2ans(text):
     equation = list2equation(text.split())
     if equation.find('=') > 0 :
         zero_equation = left_minus_right(equation)
-        return solve(eval(zero_equation)), equation
+        ans = 'x = '+','.join([str(a) for a in solve(eval(zero_equation))])
+        return ans, equation
     else: 
         return eval(equation),equation
