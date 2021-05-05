@@ -4,9 +4,9 @@ var dc = null,
   dcInterval = null;
 
 // Setup Styles
-// document
-//   .getElementById("application")
-//   .setAttribute("style", "height:" + document.body.clientHeight);
+document
+  .getElementById("application")
+  .setAttribute("style", "height:" + document.body.clientHeight);
 
 transcriptionOutput = document.getElementById("output");
 equationBox = document.getElementById("equation");
@@ -15,6 +15,8 @@ start_btn = document.getElementById("start");
 stop_btn = document.getElementById("stop");
 statusField = document.getElementById("status");
 line = document.getElementById("line");
+submitButton = document.getElementById("submit");
+textarea = document.getElementById("textarea");
 
 var lastWord = "";
 
@@ -32,9 +34,13 @@ function btn_show_stop() {
 function btn_show_start() {
   stop_btn.classList.add("d-none");
   start_btn.classList.remove("d-none");
-  lastTrans.innerText = "💤";
+  //   lastTrans.innerText = "💤";
   statusField.innerText = "";
 }
+
+textarea.onfocus = () => {
+  submitButton.classList.remove("d-none");
+};
 
 function negotiate() {
   return pc
@@ -87,7 +93,14 @@ function negotiate() {
 
 function start() {
   btn_show_stop();
+
+  // clear textarea
+  textarea.value = "";
+  textarea.classList.add("d-none");
+  transcriptionOutput.classList.remove("d-none");
+
   line.classList.add("d-none");
+  submitButton.classList.add("d-none");
 
   lastTrans.innerText = "💤";
   statusField.innerText = "Connecting...";
@@ -160,6 +173,28 @@ function start() {
   );
 }
 
+function manualSubmit() {
+  fetch("/text2num", {
+    body: JSON.stringify({
+      text: textarea.value,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data) {
+        equationBox.innerText = data.equation;
+        answerBox.innerText = data.ans;
+        line.classList.remove("d-none");
+      }
+    });
+
+  closeChannels();
+}
+
 function stop() {
   fetch("/text2num", {
     body: JSON.stringify({
@@ -178,7 +213,16 @@ function stop() {
         line.classList.remove("d-none");
       }
     });
+  // copy text over to textarea to make it editable
+  textarea.classList.remove("d-none");
+  transcriptionOutput.classList.add("d-none");
+  textarea.value = transcriptionOutput.textContent;
+  lastTrans.innerText = "";
 
+  closeChannels();
+}
+
+function closeChannels() {
   // close data channel
   if (dc) {
     dc.close();

@@ -20,6 +20,10 @@ strong {
   font-weight: 500;
 }
 
+#output {
+  min-height: 40px;
+}
+
 #application {
   display: flex;
   align-items: center;
@@ -126,4 +130,32 @@ button {
 
 #answer {
   font-size: 18px;
+}
+
+.button {
+  background: rgb(17, 153, 142); /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(
+    to left,
+    #11998e,
+    #38ef7d
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to left, #11998e, #38ef7d); */
+  box-shadow: 0 10px 20px rgba(17, 153, 142, 0.2);
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-size: 16px;
+  color: white;
+  transition: box-shadow 0.3s ease-in-out;
+  border: none !important;
+}
+.button:hover {
+  box-shadow: 0 10px 20px rgba(17, 153, 142, 0.7);
+}
+
+.input {
+  box-shadow: none;
+  width: 100%;
+  outline: none !important;
+  border: none;
+  resize: none;
 }

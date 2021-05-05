@@ -41,6 +41,11 @@
         <div class="window">
           <div class="transcription-wrapper">
             <div id="output"></div>
+            <textarea
+              class="input d-none"
+              id="textarea"
+              oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+            ></textarea>
           </div>
           <div id="line" class="d-none"></div>
           <div class="solution-wrapper">
@@ -50,6 +55,11 @@
         </div>
         <div style="padding-top: 4px">
           <p style="text-align: right" id="status"></p>
+        </div>
+        <div style="padding-top: 16px">
+          <button id="submit" class="button d-none" onclick="manualSubmit()">
+            Submit
+          </button>
         </div>
       </div>
     </div>
