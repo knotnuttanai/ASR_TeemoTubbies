@@ -1,41 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Test</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TeemoTubbies Calculator</title>
+    <!-- <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    /> -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mitr:wght@300&family=Roboto:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/normalize.css" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div id="application">
+      <div style="text-align: center">
+        <h1>TeemoTubbies Calculator</h1>
+        <h3 style="font-weight: 300">
+          Cutting edge technology for Mathematics
+        </h3>
 
-</head>
-<body>
+        <div style="padding-top: 32px" />
 
-<!-- <div class="jumbotron jumbotron-fluid" style="margin-bottom: 4px;"> -->
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <!-- <img id="logo" class="display-4 float-left" src="/static/kaldi_logo.png"> -->
-        <div style="text-align:center">
-            <h1 class="display-4"><b>TeemoTubbies<br>Calculator</b></h1>
-            <p class="lead">Cutting edge technology for Mathematics
-            </p>
+        <button id="start" onclick="start()">
+          <img src="/static/microphone-solid.svg" class="icon" />
+        </button>
+        <button id="stop" class="d-none" onclick="stop()">
+          <img src="/static/stop-solid.svg" class="icon" />
+        </button>
+
+        <div style="padding-top: 32px" />
+
+        <div class="window">
+          <div class="transcription-wrapper">
+            <div id="output"></div>
+          </div>
+          <div id="line" class="d-none"></div>
+          <div class="solution-wrapper">
+            <p id="equation"></p>
+            <p id="answer"></p>
+          </div>
         </div>
-        <hr class="my-4" style="background-color:whitesmoke">
+        <div style="padding-top: 4px">
+          <p style="text-align: right" id="status"></p>
+        </div>
+      </div>
     </div>
-</div>
-
-
-<div class="container">
-
-    <p>
-        <button class="btn btn-success" id="start" onclick="start()">Start</button>
-        <button class="btn btn-danger d-none" id="stop" onclick="stop()">Stop</button>
-        <span id="status" class="text-uppercase text-muted">Press start</span>
-    </p>
-
-    <div id="output"></div>
-
-    <script src="/static/client.js"></script>
-</div>
-</body>
+  </body>
+  <script src="/static/client.js"></script>
 </html>
